@@ -1,176 +1,401 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DSA Mastery — 3 Month Plan</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root{--bg:#0a0a0f;--surface:#11111a;--card:#16161f;--border:#ffffff0f;--accent1:#7fffb2;--accent2:#ff6b6b;--accent3:#60b4ff;--accent4:#ffcc5c;--text:#e8e8f0;--muted:#7070a0;--radius:14px}
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--text);font-family:'IBM Plex Mono',monospace;min-height:100vh;overflow-x:hidden}
-  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(127,255,178,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(127,255,178,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
-  .back-link{position:fixed;top:24px;left:24px;z-index:100;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7070a0;text-decoration:none;background:#11111a;border:1px solid #ffffff0f;padding:8px 14px;border-radius:100px;transition:color .2s,border-color .2s}
-  .back-link:hover{color:#7fffb2;border-color:rgba(127,255,178,0.25)}
-  .page{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:60px 24px 100px}
-  header{text-align:center;margin-bottom:72px;animation:fadeDown .8s ease both}
-  .badge{display:inline-block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent1);border:1px solid var(--accent1);padding:6px 16px;border-radius:100px;margin-bottom:24px;opacity:.85}
-  h1{font-family:'Syne',sans-serif;font-size:clamp(40px,7vw,80px);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:18px}
-  h1 span{color:var(--accent1)}
-  .subtitle{font-size:14px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.7}
-  .overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:60px;animation:fadeUp .8s .2s ease both}
-  .stat{background:var(--surface);padding:28px 24px;text-align:center;transition:background .2s}
-  .stat:hover{background:var(--card)}
-  .stat-num{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--accent1);display:block;margin-bottom:4px}
-  .stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
-  .month-block{margin-bottom:52px;animation:fadeUp .7s ease both}
-  .month-block:nth-child(1){animation-delay:.3s}
-  .month-block:nth-child(2){animation-delay:.45s}
-  .month-block:nth-child(3){animation-delay:.6s}
-  .month-header{display:flex;align-items:center;gap:20px;margin-bottom:24px}
-  .month-tag{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 14px;border-radius:100px;white-space:nowrap}
-  .m1 .month-tag{background:rgba(127,255,178,.12);color:var(--accent1);border:1px solid rgba(127,255,178,.25)}
-  .m2 .month-tag{background:rgba(96,180,255,.12);color:var(--accent3);border:1px solid rgba(96,180,255,.25)}
-  .m3 .month-tag{background:rgba(255,107,107,.12);color:var(--accent2);border:1px solid rgba(255,107,107,.25)}
-  .month-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700}
-  .month-line{flex:1;height:1px;background:var(--border)}
-  .month-goal{font-size:12px;color:var(--muted);margin-bottom:20px;padding-left:2px;line-height:1.6}
-  .week-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-  .week-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:transform .2s,border-color .2s,box-shadow .2s}
-  .week-card:hover{transform:translateY(-3px);border-color:rgba(127,255,178,.15);box-shadow:0 12px 40px rgba(0,0,0,.3)}
-  .m2 .week-card:hover{border-color:rgba(96,180,255,.2)}
-  .m3 .week-card:hover{border-color:rgba(255,107,107,.2)}
-  .week-label{font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin-bottom:8px}
-  .week-topic{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:12px;line-height:1.3}
-  .topics-list{list-style:none;margin-bottom:14px}
-  .topics-list li{font-size:11.5px;color:var(--muted);padding:3px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
-  .topics-list li::before{content:'▸';color:var(--accent1);flex-shrink:0;font-size:10px;margin-top:2px}
-  .m2 .topics-list li::before{color:var(--accent3)}
-  .m3 .topics-list li::before{color:var(--accent2)}
-  .res-label{font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:6px}
-  .res-chips{display:flex;flex-wrap:wrap;gap:6px}
-  .chip{font-size:10px;padding:4px 10px;border-radius:100px;border:1px solid;text-decoration:none;transition:background .2s;white-space:nowrap}
-  .chip-yt{color:#ff6b6b;border-color:rgba(255,107,107,.3)}.chip-yt:hover{background:rgba(255,107,107,.1)}
-  .chip-lc{color:#ffcc5c;border-color:rgba(255,204,92,.3)}.chip-lc:hover{background:rgba(255,204,92,.1)}
-  .chip-web{color:var(--accent3);border-color:rgba(96,180,255,.3)}.chip-web:hover{background:rgba(96,180,255,.1)}
-  .chip-gfg{color:var(--accent1);border-color:rgba(127,255,178,.3)}.chip-gfg:hover{background:rgba(127,255,178,.1)}
-  .schedule-section{margin-bottom:52px;animation:fadeUp .7s .7s ease both}
-  .section-heading{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:12px}
-  .section-heading::after{content:'';flex:1;height:1px;background:var(--border)}
-  .schedule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-  .sched-cell{background:var(--surface);padding:20px}
-  .sched-time{font-size:11px;color:var(--accent1);margin-bottom:6px;letter-spacing:.05em}
-  .sched-act{font-family:'Syne',sans-serif;font-size:13px;font-weight:600;margin-bottom:4px}
-  .sched-note{font-size:11px;color:var(--muted);line-height:1.5}
-  .resources-section{margin-bottom:52px;animation:fadeUp .7s .8s ease both}
-  .res-table{width:100%;border-collapse:collapse;font-size:12px}
-  .res-table th{text-align:left;padding:10px 14px;background:var(--surface);color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:10px;border-bottom:1px solid var(--border)}
-  .res-table td{padding:13px 14px;border-bottom:1px solid var(--border);vertical-align:top}
-  .res-table tr:last-child td{border-bottom:none}
-  .res-table tr:hover td{background:var(--card)}
-  .res-name{font-family:'Syne',sans-serif;font-size:13px;font-weight:600}
-  .res-desc{color:var(--muted);font-size:11px;margin-top:2px}
-  .res-link{color:var(--accent3);text-decoration:none;font-size:11px}.res-link:hover{color:var(--accent1)}
-  .tag-free{background:rgba(127,255,178,.1);color:var(--accent1);border:1px solid rgba(127,255,178,.2);font-size:9px;padding:2px 8px;border-radius:100px}
-  .tag-paid{background:rgba(255,204,92,.1);color:var(--accent4);border:1px solid rgba(255,204,92,.2);font-size:9px;padding:2px 8px;border-radius:100px}
-  .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;animation:fadeUp .7s .9s ease both}
-  .tip-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
-  .tip-icon{font-size:22px;margin-bottom:10px}
-  .tip-title{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;margin-bottom:6px}
-  .tip-body{font-size:11.5px;color:var(--muted);line-height:1.7}
-  footer{text-align:center;margin-top:80px;font-size:11px;color:var(--muted);line-height:1.8}
-  footer a{color:var(--accent3);text-decoration:none}
-  @keyframes fadeDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-  @media(max-width:600px){.week-grid{grid-template-columns:1fr}.schedule-grid{grid-template-columns:1fr 1fr}.res-table th:nth-child(3),.res-table td:nth-child(3){display:none}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QA & Dev Portfolio | Learning Roadmaps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/portfolio.css" />
 </head>
 <body>
-<a class="back-link" href="index.html">← Back to Portfolio</a>
-<div class="page">
-  <header>
-    <div class="badge">☕ Java · DSA · 0 → Interview Ready</div>
-    <h1>3-Month <span>DSA</span><br>Mastery Plan</h1>
-    <p class="subtitle">A structured, beginner-friendly roadmap to learn Data Structures &amp; Algorithms from scratch using Java — with hand-picked free resources.</p>
-  </header>
-  <div class="overview">
-    <div class="stat"><span class="stat-num">12</span><span class="stat-label">Weeks</span></div>
-    <div class="stat"><span class="stat-num">~2h</span><span class="stat-label">Per Day</span></div>
-    <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Topics</span></div>
-    <div class="stat"><span class="stat-num">150+</span><span class="stat-label">Problems</span></div>
-    <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Free Core Resources</span></div>
-  </div>
-  <div class="month-block m1">
-    <div class="month-header"><span class="month-tag">Month 1</span><span class="month-title">Java Basics + Core Data Structures</span><div class="month-line"></div></div>
-    <p class="month-goal">// Goal: Get comfortable with Java syntax and understand foundational data structures. No prior Java experience needed.</p>
-    <div class="week-grid">
-      <div class="week-card"><div class="week-label">Week 1</div><div class="week-topic">Java Fundamentals</div><ul class="topics-list"><li>Install JDK + IntelliJ / VS Code</li><li>Variables, data types, operators</li><li>Control flow: if, switch, loops</li><li>Functions &amp; method overloading</li><li>Arrays basics (1D &amp; 2D)</li><li>Strings &amp; StringBuilder</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=eIrMbAQSU34" target="_blank">▶ freeCodeCamp Java</a><a class="chip chip-web" href="https://www.w3schools.com/java/" target="_blank">W3Schools Java</a><a class="chip chip-gfg" href="https://www.geeksforgeeks.org/java/" target="_blank">GFG Java</a></div></div>
-      <div class="week-card"><div class="week-label">Week 2</div><div class="week-topic">OOP + Collections Intro</div><ul class="topics-list"><li>Classes, Objects, Constructors</li><li>Encapsulation, Inheritance</li><li>ArrayList vs LinkedList (concept)</li><li>HashMap, HashSet basics</li><li>Time &amp; Space Complexity (Big O)</li><li>Practice: 10 easy array problems</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/playlist?list=PL9gnSGHSqcnr_DxHsP7AW9ftq0AtAyYqJ" target="_blank">▶ Kunal Kushwaha</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?difficulty=EASY&topicSlugs=array" target="_blank">LeetCode Easy Arrays</a></div></div>
-      <div class="week-card"><div class="week-label">Week 3</div><div class="week-topic">Arrays &amp; Strings Deep Dive</div><ul class="topics-list"><li>Two pointers technique</li><li>Sliding window pattern</li><li>Prefix sums</li><li>String manipulation patterns</li><li>Anagram, palindrome problems</li><li>Solve 15 problems on LeetCode</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=P3YID7liBug" target="_blank">▶ Two Pointers</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=two-pointers" target="_blank">LeetCode Two Pointers</a><a class="chip chip-gfg" href="https://www.geeksforgeeks.org/sliding-window-maximum-maximum-of-all-subarrays-of-size-k/" target="_blank">Sliding Window GFG</a></div></div>
-      <div class="week-card"><div class="week-label">Week 4</div><div class="week-topic">Linked Lists</div><ul class="topics-list"><li>Singly Linked List (build from scratch)</li><li>Doubly Linked List</li><li>Insert, delete, traversal</li><li>Reverse a linked list</li><li>Detect cycle (Floyd's algorithm)</li><li>Merge two sorted lists</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=58YbpRDc4yw" target="_blank">▶ Striver Linked List</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=linked-list&difficulty=EASY" target="_blank">LeetCode Linked List</a></div></div>
+
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-bracket">{</span>QA<span class="logo-dot">.</span>Dev<span class="logo-bracket">}</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#courses">Roadmaps</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="lms.html" class="nav-lms-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Open LMS
+      </a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span class="toggle-track">
+          <span class="toggle-thumb">
+            <svg class="sun-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="moon-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </span>
+        </span>
+      </button>
+      <button class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-  <div class="month-block m2">
-    <div class="month-header"><span class="month-tag">Month 2</span><span class="month-title">Intermediate Structures + Recursion</span><div class="month-line"></div></div>
-    <p class="month-goal">// Goal: Master stacks, queues, trees, and build a strong intuition for recursion — the core of advanced DSA.</p>
-    <div class="week-grid">
-      <div class="week-card"><div class="week-label">Week 5</div><div class="week-topic">Stack &amp; Queue</div><ul class="topics-list"><li>Stack using array &amp; LinkedList</li><li>Queue using array &amp; LinkedList</li><li>Java Stack &amp; ArrayDeque classes</li><li>Valid parentheses problem</li><li>Next greater element</li><li>Implement queue using stacks</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=PYsXmznCHMg" target="_blank">▶ Stack &amp; Queue</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=stack" target="_blank">LeetCode Stack</a><a class="chip chip-gfg" href="https://www.geeksforgeeks.org/stack-data-structure/" target="_blank">GFG Stack</a></div></div>
-      <div class="week-card"><div class="week-label">Week 6</div><div class="week-topic">Recursion &amp; Backtracking</div><ul class="topics-list"><li>Understanding the call stack</li><li>Base case and recursive case</li><li>Factorial, Fibonacci, power</li><li>Subsets &amp; permutations</li><li>N-Queens (visualize, not memorize)</li><li>Maze/path problems</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=M2uO2nMT0Bk" target="_blank">▶ Striver Recursion</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=recursion" target="_blank">LeetCode Recursion</a></div></div>
-      <div class="week-card"><div class="week-label">Week 7</div><div class="week-topic">Binary Trees</div><ul class="topics-list"><li>Tree terminology &amp; node class</li><li>Inorder, Preorder, Postorder</li><li>Level order (BFS)</li><li>Height, diameter of tree</li><li>Lowest common ancestor</li><li>Symmetric &amp; balanced tree checks</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=fAAZixBzIAI" target="_blank">▶ Trees Striver</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=tree&difficulty=EASY" target="_blank">LeetCode Trees</a><a class="chip chip-gfg" href="https://www.geeksforgeeks.org/binary-tree-data-structure/" target="_blank">GFG Trees</a></div></div>
-      <div class="week-card"><div class="week-label">Week 8</div><div class="week-topic">BST + Hashing</div><ul class="topics-list"><li>Binary Search Tree operations</li><li>Insert, search, delete in BST</li><li>Validate BST</li><li>HashMap internals in Java</li><li>Two Sum, group anagrams</li><li>Longest consecutive sequence</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=p7-9UvDQZ3w" target="_blank">▶ BST Playlist</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=hash-table" target="_blank">LeetCode Hashing</a></div></div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for Opportunities
+    </div>
+    <h1 class="hero-title">
+      <span class="line-reveal">Software Test</span>
+      <span class="line-reveal delay-1">Engineer <span class="title-accent">&amp; Dev</span></span>
+    </h1>
+    <p class="hero-sub">Automating quality. Crafting reliability. Building scalable test architectures with Java, Python, Playwright, and modern DevOps practices.</p>
+    <div class="hero-tags">
+      <span class="tag">Java</span>
+      <span class="tag">Python</span>
+      <span class="tag">Playwright</span>
+      <span class="tag">RestAssured</span>
+      <span class="tag">Selenium</span>
+      <span class="tag">CI/CD</span>
+      <span class="tag">SQL</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#experience" class="btn btn-primary">View My Work</a>
+      <a href="lms.html" class="btn btn-ghost">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Browse Learning Paths
+      </a>
     </div>
   </div>
-  <div class="month-block m3">
-    <div class="month-header"><span class="month-tag">Month 3</span><span class="month-title">Algorithms + Interview Patterns</span><div class="month-line"></div></div>
-    <p class="month-goal">// Goal: Learn must-know algorithms, tackle interview patterns, and build confidence through consistent problem solving.</p>
-    <div class="week-grid">
-      <div class="week-card"><div class="week-label">Week 9</div><div class="week-topic">Sorting &amp; Searching</div><ul class="topics-list"><li>Bubble, Selection, Insertion sort</li><li>Merge Sort (master recursion here)</li><li>Quick Sort</li><li>Binary Search &amp; variants</li><li>Search in rotated sorted array</li><li>Find peak element</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=HGk_ypEuS24" target="_blank">▶ Sorting Algorithms</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=binary-search" target="_blank">LeetCode Binary Search</a><a class="chip chip-gfg" href="https://www.geeksforgeeks.org/sorting-algorithms/" target="_blank">GFG Sorting</a></div></div>
-      <div class="week-card"><div class="week-label">Week 10</div><div class="week-topic">Graphs Intro</div><ul class="topics-list"><li>Graph representation (adjacency list)</li><li>BFS traversal</li><li>DFS traversal</li><li>Detect cycle in graph</li><li>Number of islands (classic)</li><li>Connected components</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=M3KTWnTrU_c&list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn" target="_blank">▶ Striver Graphs</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=graph" target="_blank">LeetCode Graphs</a></div></div>
-      <div class="week-card"><div class="week-label">Week 11</div><div class="week-topic">Dynamic Programming Basics</div><ul class="topics-list"><li>What is memoization?</li><li>Top-down vs bottom-up DP</li><li>Fibonacci with DP</li><li>0/1 Knapsack problem</li><li>Climbing stairs</li><li>Longest common subsequence</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-yt" href="https://www.youtube.com/watch?v=oBt53YbR9Kk" target="_blank">▶ freeCodeCamp DP</a><a class="chip chip-lc" href="https://leetcode.com/problemset/all/?topicSlugs=dynamic-programming&difficulty=EASY" target="_blank">LeetCode DP Easy</a><a class="chip chip-gfg" href="https://www.geeksforgeeks.org/dynamic-programming/" target="_blank">GFG DP</a></div></div>
-      <div class="week-card"><div class="week-label">Week 12</div><div class="week-topic">Mock Interviews + Review</div><ul class="topics-list"><li>Solve 20 mixed problems on LeetCode</li><li>Revisit weak topics</li><li>Timed problem solving (30 min each)</li><li>Practice explaining solutions aloud</li><li>Try NeetCode 150 checklist</li><li>Read: system design basics (bonus)</li></ul><div class="res-label">Resources</div><div class="res-chips"><a class="chip chip-web" href="https://neetcode.io/roadmap" target="_blank">NeetCode 150</a><a class="chip chip-lc" href="https://leetcode.com/explore/interview/card/top-interview-questions-easy/" target="_blank">LeetCode Top Easy</a><a class="chip chip-yt" href="https://www.youtube.com/watch?v=Peq4GCPNKCA" target="_blank">▶ Mock Interview Tips</a></div></div>
+  <div class="hero-visual">
+    <div class="code-card">
+      <div class="code-header">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="code-filename">TestSuite.java</span>
+      </div>
+      <pre class="code-body"><code><span class="code-comment">// API Test with RestAssured</span>
+<span class="code-keyword">@Test</span>
+<span class="code-keyword">public void</span> <span class="code-fn">verifyUserEndpoint</span>() {
+  given()
+    .baseUri(<span class="code-str">"https://api.example.com"</span>)
+    .header(<span class="code-str">"Authorization"</span>, token)
+  .when()
+    .get(<span class="code-str">"/users/1"</span>)
+  .then()
+    .statusCode(<span class="code-num">200</span>)
+    .body(<span class="code-str">"name"</span>, equalTo(<span class="code-str">"John"</span>))
+    .time(lessThan(<span class="code-num">2000L</span>));
+}</code></pre>
+    </div>
+    <div class="stats-row">
+      <div class="stat-chip"><span class="stat-num">9+</span><span class="stat-label">Learning Paths</span></div>
+      <div class="stat-chip"><span class="stat-num">4-6</span><span class="stat-label">Months Each</span></div>
+      <div class="stat-chip"><span class="stat-num">2hrs</span><span class="stat-label">Daily Practice</span></div>
     </div>
   </div>
-  <div class="schedule-section">
-    <div class="section-heading">Daily Study Schedule (~2 hours)</div>
-    <div class="schedule-grid">
-      <div class="sched-cell"><div class="sched-time">Day 1, 3, 5 (Weekdays)</div><div class="sched-act">Learn New Concept</div><div class="sched-note">Watch video, read notes, type out code examples yourself.</div></div>
-      <div class="sched-cell"><div class="sched-time">30 mins</div><div class="sched-act">Theory + Notes</div><div class="sched-note">Understand the "why" behind the data structure / algorithm.</div></div>
-      <div class="sched-cell"><div class="sched-time">60 mins</div><div class="sched-act">Solve 2–3 Problems</div><div class="sched-note">Easy → Medium. Always try yourself before looking at hints.</div></div>
-      <div class="sched-cell"><div class="sched-time">30 mins</div><div class="sched-act">Review &amp; Revise</div><div class="sched-note">Revisit yesterday's problems. Write down patterns noticed.</div></div>
-      <div class="sched-cell"><div class="sched-time">Weekend</div><div class="sched-act">Problem Marathon</div><div class="sched-note">Solve 5–8 problems mixing the week's topics. Timed sessions.</div></div>
+</section>
+
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-eyebrow">About Me</p>
+        <h2 class="section-title">Passionate about <span class="accent">Quality</span> &amp; Continuous Learning</h2>
+        <p class="about-para">I'm a QA Engineer and Developer who believes that quality is not just a phase — it's a culture. With hands-on experience across manual, automation, and performance testing, I thrive in fast-paced teams where reliability matters.</p>
+        <p class="about-para">I've built this learning platform to document and share structured roadmaps for tools and technologies I use every day — helping others navigate the complex landscape of modern QA engineering.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">⚡</div>
+            <div><strong>Test Automation</strong><p>End-to-end, API, and performance testing</p></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🎯</div>
+            <div><strong>CI/CD Integration</strong><p>Jenkins, GitHub Actions, Docker pipelines</p></div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📚</div>
+            <div><strong>Mentorship</strong><p>Structured roadmaps &amp; learning guides</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="avatar-wrap">
+          <div class="avatar-ring"></div>
+          <div class="avatar-placeholder">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <p>Your Photo</p>
+          </div>
+        </div>
+        <div class="about-card-float">
+          <span class="float-icon">🏆</span>
+          <div>
+            <strong>ISTQB Certified</strong>
+            <p>Foundation Level</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="resources-section">
-    <div class="section-heading">Core Resources</div>
-    <table class="res-table">
-      <thead><tr><th>Resource</th><th>Best For</th><th>Type</th><th>Link</th></tr></thead>
-      <tbody>
-        <tr><td><div class="res-name">Kunal Kushwaha DSA Course</div><div class="res-desc">Complete beginner-friendly Java + DSA YouTube playlist</div></td><td>Month 1–2</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://www.youtube.com/@KunalKushwaha" target="_blank">youtube.com/@KunalKushwaha</a></td></tr>
-        <tr><td><div class="res-name">Striver's A2Z DSA Sheet</div><div class="res-desc">Structured sheet with 450+ curated problems</div></td><td>Month 2–3</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/" target="_blank">takeuforward.org</a></td></tr>
-        <tr><td><div class="res-name">LeetCode</div><div class="res-desc">Best platform for interview-style problem practice</div></td><td>Month 1–3</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://leetcode.com" target="_blank">leetcode.com</a></td></tr>
-        <tr><td><div class="res-name">GeeksForGeeks</div><div class="res-desc">Detailed explanations, concept articles, Java examples</div></td><td>All Months</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://www.geeksforgeeks.org" target="_blank">geeksforgeeks.org</a></td></tr>
-        <tr><td><div class="res-name">NeetCode</div><div class="res-desc">NeetCode 150 — curated roadmap with video solutions</div></td><td>Month 3</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://neetcode.io" target="_blank">neetcode.io</a></td></tr>
-        <tr><td><div class="res-name">Java Visualizer</div><div class="res-desc">Visualize code execution step-by-step in browser</div></td><td>Month 1</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://pythontutor.com/java.html" target="_blank">pythontutor.com/java</a></td></tr>
-        <tr><td><div class="res-name">Data Structures Easy to Advanced (fCC)</div><div class="res-desc">8-hour comprehensive YouTube course with Java</div></td><td>Month 1–2</td><td><span class="tag-free">Free</span></td><td><a class="res-link" href="https://www.youtube.com/watch?v=RBSGKlAvoiM" target="_blank">youtube.com (fCC)</a></td></tr>
-        <tr><td><div class="res-name">Introduction to Algorithms (CLRS)</div><div class="res-desc">Gold standard textbook — reference for deep understanding</div></td><td>Month 3 (optional)</td><td><span class="tag-paid">Book</span></td><td><a class="res-link" href="https://mitpress.mit.edu/9780262046305/" target="_blank">MIT Press</a></td></tr>
-      </tbody>
-    </table>
+</section>
+
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<section class="section section-alt" id="skills">
+  <div class="container">
+    <p class="section-eyebrow center">Tech Stack</p>
+    <h2 class="section-title center">Skills &amp; <span class="accent">Technologies</span></h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3 class="skill-cat-title">
+          <span class="cat-icon">🔧</span> Test Automation
+        </h3>
+        <div class="skill-pills">
+          <span class="skill-pill level-expert">Selenium WebDriver</span>
+          <span class="skill-pill level-expert">RestAssured</span>
+          <span class="skill-pill level-advanced">Playwright</span>
+          <span class="skill-pill level-advanced">Cypress</span>
+          <span class="skill-pill level-intermediate">Appium</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-cat-title">
+          <span class="cat-icon">💻</span> Languages
+        </h3>
+        <div class="skill-pills">
+          <span class="skill-pill level-expert">Java</span>
+          <span class="skill-pill level-advanced">Python</span>
+          <span class="skill-pill level-advanced">TypeScript</span>
+          <span class="skill-pill level-intermediate">JavaScript</span>
+          <span class="skill-pill level-intermediate">SQL</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-cat-title">
+          <span class="cat-icon">⚙️</span> DevOps & CI/CD
+        </h3>
+        <div class="skill-pills">
+          <span class="skill-pill level-advanced">Jenkins</span>
+          <span class="skill-pill level-advanced">GitHub Actions</span>
+          <span class="skill-pill level-intermediate">Docker</span>
+          <span class="skill-pill level-intermediate">Kubernetes</span>
+          <span class="skill-pill level-beginner">Terraform</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-cat-title">
+          <span class="cat-icon">📊</span> Performance Testing
+        </h3>
+        <div class="skill-pills">
+          <span class="skill-pill level-advanced">JMeter</span>
+          <span class="skill-pill level-intermediate">K6</span>
+          <span class="skill-pill level-intermediate">Gatling</span>
+          <span class="skill-pill level-beginner">Locust</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-cat-title">
+          <span class="cat-icon">🤖</span> AI & Testing
+        </h3>
+        <div class="skill-pills">
+          <span class="skill-pill level-intermediate">LLM Testing</span>
+          <span class="skill-pill level-intermediate">Prompt Engineering</span>
+          <span class="skill-pill level-beginner">ML Model Testing</span>
+          <span class="skill-pill level-intermediate">pytest + AI</span>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-cat-title">
+          <span class="cat-icon">🗄️</span> Databases
+        </h3>
+        <div class="skill-pills">
+          <span class="skill-pill level-advanced">MySQL</span>
+          <span class="skill-pill level-advanced">PostgreSQL</span>
+          <span class="skill-pill level-intermediate">MongoDB</span>
+          <span class="skill-pill level-intermediate">Redis</span>
+        </div>
+      </div>
+    </div>
+    <div class="skill-legend">
+      <span><span class="legend-dot level-expert"></span>Expert</span>
+      <span><span class="legend-dot level-advanced"></span>Advanced</span>
+      <span><span class="legend-dot level-intermediate"></span>Intermediate</span>
+      <span><span class="legend-dot level-beginner"></span>Beginner</span>
+    </div>
   </div>
-  <div class="section-heading" style="animation:fadeUp .7s .85s ease both;">Pro Tips for Beginners</div>
-  <div class="tips-grid">
-    <div class="tip-card"><div class="tip-icon">🧱</div><div class="tip-title">Build, Don't Copy</div><div class="tip-body">Always type out code yourself. Never copy-paste from tutorials. Muscle memory is a real thing in coding.</div></div>
-    <div class="tip-card"><div class="tip-icon">📓</div><div class="tip-title">Maintain a Pattern Journal</div><div class="tip-body">After each solved problem, write: "This was a sliding window problem because...". Patterns stick better than solutions.</div></div>
-    <div class="tip-card"><div class="tip-icon">⏱️</div><div class="tip-title">Time-box Struggles</div><div class="tip-body">Spend max 30 minutes on a problem before checking hints. Struggling is good. Suffering in silence for 3 hours is not.</div></div>
-    <div class="tip-card"><div class="tip-icon">🔁</div><div class="tip-title">Spaced Repetition</div><div class="tip-body">Re-solve problems you found hard after 3 days, then 7 days. This builds real long-term retention.</div></div>
-    <div class="tip-card"><div class="tip-icon">🗣️</div><div class="tip-title">Talk Through Solutions</div><div class="tip-body">Explain your approach out loud like in an interview. If you can't explain it simply, you don't understand it yet.</div></div>
-    <div class="tip-card"><div class="tip-icon">🎯</div><div class="tip-title">Quality Over Quantity</div><div class="tip-body">Thoroughly understanding 100 problems beats racing through 300. Focus on understanding the pattern, not just passing the test.</div></div>
+</section>
+
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<section class="section" id="experience">
+  <div class="container">
+    <p class="section-eyebrow center">Career Journey</p>
+    <h2 class="section-title center">Work <span class="accent">Experience</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <h3>Senior QA Automation Engineer</h3>
+              <p class="timeline-company">Your Current Company</p>
+            </div>
+            <span class="timeline-date">2023 – Present</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Built end-to-end test automation framework using Java + Selenium + TestNG</li>
+            <li>Implemented API testing suite with RestAssured covering 200+ endpoints</li>
+            <li>Integrated test pipelines with Jenkins and GitHub Actions for CI/CD</li>
+            <li>Reduced regression cycle from 3 days to 4 hours through automation</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>Java</span><span>Selenium</span><span>RestAssured</span><span>Jenkins</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <h3>QA Engineer</h3>
+              <p class="timeline-company">Previous Company</p>
+            </div>
+            <span class="timeline-date">2021 – 2023</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Developed Playwright test suite for web application with TypeScript</li>
+            <li>Performed API testing using Postman and Python requests library</li>
+            <li>Executed performance tests using JMeter for load and stress testing</li>
+            <li>Collaborated with Dev teams in Agile/Scrum methodology</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>Playwright</span><span>Python</span><span>JMeter</span><span>Postman</span>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div>
+              <h3>Junior QA Tester</h3>
+              <p class="timeline-company">First Company</p>
+            </div>
+            <span class="timeline-date">2019 – 2021</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Manual testing of web and mobile applications</li>
+            <li>Wrote detailed test cases and bug reports in JIRA</li>
+            <li>Learned fundamentals of SQL for test data management</li>
+            <li>Started automation journey with Selenium and Java</li>
+          </ul>
+          <div class="timeline-tags">
+            <span>Manual Testing</span><span>SQL</span><span>JIRA</span><span>Selenium</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <footer>
-    <p>Built for absolute beginners · Java · Data Structures &amp; Algorithms</p>
-    <p style="margin-top:6px;">Consistency beats intensity — 2 focused hours every day beats a 10-hour Sunday grind.</p>
-    <p style="margin-top:12px;color:#3a3a5a;">Good luck. You've got this. 🚀</p>
-    <p style="margin-top:16px;"><a href="index.html">← Back to rijutr's portfolio</a></p>
-  </footer>
-</div>
+</section>
+
+<!-- ═══════════════════ COURSES PREVIEW ═══════════════════ -->
+<section class="section section-alt" id="courses">
+  <div class="container">
+    <p class="section-eyebrow center">Learning Platform</p>
+    <h2 class="section-title center">Structured <span class="accent">Roadmaps</span></h2>
+    <p class="section-sub center">9 curated learning paths — each designed for 2hrs/day commitment over 4-6 months</p>
+    <div class="course-preview-grid" id="coursePreviewGrid">
+      <!-- JS populated -->
+    </div>
+    <div class="courses-cta">
+      <a href="lms.html" class="btn btn-primary btn-large">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Open Full LMS Platform
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
+<section class="section" id="contact">
+  <div class="container">
+    <p class="section-eyebrow center">Get In Touch</p>
+    <h2 class="section-title center">Let's <span class="accent">Connect</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>Whether you want to collaborate, discuss testing strategies, or just say hello — my inbox is open.</p>
+        <div class="contact-links">
+          <a href="https://github.com/yourusername" class="contact-link" target="_blank">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:your@email.com" class="contact-link">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email Me
+          </a>
+          <a href="https://twitter.com/yourusername" class="contact-link" target="_blank">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Twitter/X
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap">
+        <div class="contact-form">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Doe" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea rows="4" placeholder="Let's talk about testing, collaboration, or anything..."></textarea>
+          </div>
+          <button class="btn btn-primary w-full" onclick="alert('Please configure a form handler (Formspree, EmailJS, etc.) to receive messages.')">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><span class="logo-bracket">{</span>QA<span class="logo-dot">.</span>Dev<span class="logo-bracket">}</span></a>
+        <p>Building quality, one test at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Portfolio</a>
+        <a href="lms.html">LMS Platform</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 QA.Dev Portfolio • Built with ❤️ and deployed on GitHub Pages</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
