@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QA → AI Engineer: 12-Week Step-by-Step Plan</title>
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #161b22;
+            --surface-hover: #1c2128;
+            --border: #30363d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79b8ff;
+            --accent-soft: rgba(88, 166, 255, 0.1);
+            --accent-soft-2: rgba(88, 166, 255, 0.05);
+            --success: #3fb950;
+            --success-soft: rgba(63, 185, 80, 0.1);
+            --warning: #d29922;
+            --warning-soft: rgba(210, 153, 34, 0.1);
+            --danger: #f85149;
+            --tag-bg: #21262d;
+            --tag-text: #c9d1d9;
+            --shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--accent), var(--success));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 0.5rem auto 0;
+        }
+
+        .meta-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 1rem;
+        }
+
+        .overview {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .overview h2 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .overview-item {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .overview-item .label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .overview-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .phase-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .phase-divider .line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .phase-divider .phase-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .week-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .week-card:hover {
+            box-shadow: var(--shadow);
+        }
+
+        .week-header {
+            padding: 1.25rem 1.5rem;
+            background: var(--surface-hover);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .week-number {
+            background: var(--accent);
+            color: var(--bg);
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 3.2rem;
+            height: 3.2rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .week-title-wrap {
+            flex: 1;
+        }
+
+        .week-title-wrap h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .week-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 0.15rem;
+        }
+
+        .week-hours {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: var(--bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .toggle-icon {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            transition: transform 0.2s ease;
+            margin-left: 0.5rem;
+        }
+
+        .week-card.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .week-body {
+            padding: 1.5rem;
+        }
+
+        .week-card.collapsed .week-body {
+            display: none;
+        }
+
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-secondary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .section-label:first-child {
+            margin-top: 0;
+        }
+
+        .task-list {
+            list-style: none;
+        }
+
+        .task-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .task-list li:last-child {
+            border-bottom: none;
+        }
+
+        .task-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.8rem;
+        }
+
+        .task-list li.done::before {
+            content: "✓";
+            color: var(--success);
+        }
+
+        .deliverable-box {
+            background: var(--success-soft);
+            border: 1px solid rgba(63, 185, 80, 0.2);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .deliverable-box .deliverable-title {
+            font-weight: 700;
+            color: var(--success);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .deliverable-box p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .qa-tip {
+            background: var(--warning-soft);
+            border: 1px solid rgba(210, 153, 34, 0.2);
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            margin-top: 1rem;
+        }
+
+        .qa-tip .qa-title {
+            font-weight: 700;
+            color: var(--warning);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .qa-tip p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .resource-link {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .time-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .time-item {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .time-item .time-val {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .time-item .time-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .checkpoint {
+            background: var(--accent-soft-2);
+            border: 1px solid rgba(88, 166, 255, 0.15);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .checkpoint h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkpoint p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            header h1 { font-size: 1.5rem; }
+            .week-header { flex-wrap: wrap; }
+            .week-hours { margin-left: 4.2rem; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>12-Week Step-by-Step Plan</h1>
+            <p>QA Engineer (4.6 YOE) → AI Engineer (3-4 YOE target).<br>Every task, every resource, every deliverable mapped out.</p>
+            <div class="meta-badge">
+                <span>⏱️</span> ~15-20 hrs/week &middot; <span>🎯</span> Actionable Tasks &middot; <span>📦</span> Weekly Deliverables
+            </div>
+        </header>
+
+        <div class="overview">
+            <h2>Plan Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <div class="label">Total Duration</div>
+                    <div class="value">12 Weeks</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">Weekly Commitment</div>
+                    <div class="value">15-20 Hours</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">Portfolio Projects</div>
+                    <div class="value">4-5 Projects</div>
+                </div>
+                <div class="overview-item">
+                    <div class="label">GitHub Commits</div>
+                    <div class="value">~60-80</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 1 -->
+        <div class="phase-divider">
+            <div class="line"></div>
+            <div class="phase-label">Phase 1: Foundations (Weeks 1-4)</div>
+            <div class="line"></div>
+        </div>
+
+        <!-- WEEK 1 -->
+        <div class="week-card" id="w1">
+            <div class="week-header" onclick="toggleWeek('w1')">
+                <div class="week-number">W1</div>
+                <div class="week-title-wrap">
+                    <h3>Python Data Stack — Refresh & pandas Mastery</h3>
+                    <div class="week-subtitle">Get comfortable manipulating data like a data scientist</div>
+                </div>
+                <div class="week-hours">~15 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (4 hrs)</div>
+                <ul class="task-list">
+                    <li>Read <a href="https://wesmckinney.com/book/" class="resource-link" target="_blank">Python for Data Analysis</a> Chapters 1-3 (IPython, pandas basics)</li>
+                    <li>Complete all exercises in Chapter 3. Type every line — don't copy-paste.</li>
+                    <li>Set up your environment: Python 3.10+, Jupyter Lab, VS Code with Python extension</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (4 hrs)</div>
+                <ul class="task-list">
+                    <li>Read Chapters 4-6 (NumPy, pandas advanced: groupby, merge, pivot)</li>
+                    <li>Do the <a href="https://www.kaggle.com/learn/pandas" class="resource-link" target="_blank">Kaggle Pandas micro-course</a> (all 5 lessons)</li>
+                    <li>Build a script that reads a CSV, cleans nulls, groups by category, and outputs summary stats</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (4 hrs)</div>
+                <ul class="task-list">
+                    <li>Read Chapter 10 (Data Aggregation) + Chapter 11 (Time Series if time permits)</li>
+                    <li>Complete <a href="https://www.kaggle.com/learn/data-cleaning" class="resource-link" target="_blank">Kaggle Data Cleaning</a> course</li>
+                    <li>Practice: Take a messy dataset (find one on Kaggle), write a full cleaning pipeline</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Review & consolidate notes into a Notion/Obsidian doc</li>
+                    <li>Write a blog post or README: "10 pandas tricks every QA engineer should know"</li>
+                    <li>Plan Week 2 schedule</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 1 Deliverable</div>
+                    <p>A GitHub repo with 3 Jupyter notebooks: (1) pandas basics cheat sheet, (2) data cleaning pipeline on a real dataset, (3) exploratory data analysis (EDA) with visualizations.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Think of data cleaning as <strong>test data preparation</strong> at scale. The skills you use to generate edge-case test data are exactly what data scientists do with feature engineering.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 2 -->
+        <div class="week-card" id="w2">
+            <div class="week-header" onclick="toggleWeek('w2')">
+                <div class="week-number">W2</div>
+                <div class="week-title-wrap">
+                    <h3>NumPy, Math Refresher & Intro to ML Concepts</h3>
+                    <div class="week-subtitle">Build the mathematical intuition behind ML</div>
+                </div>
+                <div class="week-hours">~15 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (4 hrs)</div>
+                <ul class="task-list">
+                    <li>Deep dive into NumPy: broadcasting, vectorization, masking, fancy indexing</li>
+                    <li>Complete <a href="https://www.kaggle.com/learn/intro-to-machine-learning" class="resource-link" target="_blank">Kaggle Intro to Machine Learning</a></li>
+                    <li>Implement a simple linear regression from scratch using only NumPy (no sklearn)</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (4 hrs)</div>
+                <ul class="task-list">
+                    <li>Math refresh: linear algebra (vectors, matrices, dot product) — use <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" class="resource-link" target="_blank">3Blue1Brown Essence of Linear Algebra</a> (videos 1-6)</li>
+                    <li>Statistics refresh: mean, variance, standard deviation, covariance, correlation</li>
+                    <li>Build a function that computes gradient descent for linear regression</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (4 hrs)</div>
+                <ul class="task-list">
+                    <li>Read <a href="https://scikit-learn.org/stable/tutorial/basic/tutorial.html" class="resource-link" target="_blank">Scikit-learn Getting Started</a></li>
+                    <li>Build a classification model (Titanic dataset) using sklearn: train/test split, preprocessing, model training, evaluation</li>
+                    <li>Manually calculate accuracy, precision, recall, F1-score (don't use sklearn metrics yet — understand the math)</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Write a comparison doc: "Manual ML vs sklearn — what the library hides from you"</li>
+                    <li>Push all notebooks to GitHub with clean READMEs</li>
+                    <li>Start Andrew Ng's ML Specialization Course 1 (Week 1 videos only)</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 2 Deliverable</div>
+                    <p>GitHub repo: "ml-from-scratch" with (1) NumPy linear regression, (2) manual gradient descent visualization, (3) sklearn Titanic classifier with custom metric calculations.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Calculating precision/recall manually is exactly like writing <strong>custom assertion logic</strong> in your test framework. You already know how to verify outputs — now you're just doing it for models.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 3 -->
+        <div class="week-card" id="w3">
+            <div class="week-header" onclick="toggleWeek('w3')">
+                <div class="week-number">W3</div>
+                <div class="week-title-wrap">
+                    <h3>ML Algorithms & Model Evaluation</h3>
+                    <div class="week-subtitle">Understand how models work and how to measure them</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete Andrew Ng ML Specialization Course 1 (all weeks) — focus on cost function, gradient descent, overfitting</li>
+                    <li>Read <a href="https://scikit-learn.org/stable/modules/model_evaluation.html" class="resource-link" target="_blank">Scikit-learn Model Evaluation</a></li>
+                    <li>Implement k-fold cross-validation from scratch on the Iris dataset</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Learn 4 algorithms deeply: Logistic Regression, Decision Trees, Random Forest, SVM</li>
+                    <li>For each: understand the intuition, implement with sklearn, visualize decision boundaries</li>
+                    <li>Compare all 4 on the same dataset and create a results table</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Study bias vs variance, underfitting vs overfitting, learning curves</li>
+                    <li>Plot learning curves for your models (train vs validation error vs training size)</li>
+                    <li>Implement regularization (L1/L2) from scratch and observe the effect</li>
+                    <li>Hyperparameter tuning: GridSearchCV and RandomizedSearchCV</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Write a blog post: "How I evaluate ML models: A QA Engineer's approach to model validation"</li>
+                    <li>Create a reusable evaluation module (precision, recall, confusion matrix, ROC curve, AUC)</li>
+                    <li>Push everything to GitHub</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 3 Deliverable</div>
+                    <p>A comprehensive "model-evaluation-toolkit" repo with: (1) 4 algorithm comparisons, (2) custom cross-validation, (3) learning curve visualizations, (4) reusable evaluation functions.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Cross-validation is just <strong>test automation with multiple data splits</strong>. You're already an expert at running the same test with different inputs — now apply it to model training.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 4 -->
+        <div class="week-card" id="w4">
+            <div class="week-header" onclick="toggleWeek('w4')">
+                <div class="week-number">W4</div>
+                <div class="week-title-wrap">
+                    <h3>Deep Learning Foundations — Neural Networks</h3>
+                    <div class="week-subtitle">Build your first neural network and understand backpropagation</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Watch <a href="https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRxKj" class="resource-link" target="_blank">Karpathy's Neural Networks: Zero to Hero</a> — Videos 1-3 (micrograd, makemore part 1)</li>
+                    <li>Implement a 2-layer neural network from scratch using only NumPy</li>
+                    <li>Forward pass, backward pass, weight updates — all manual</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Watch Karpathy Videos 4-5 (makemore part 2-3) — MLP, batch norm, activations</li>
+                    <li>Complete <a href="https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html" class="resource-link" target="_blank">PyTorch 60-Minute Blitz</a></li>
+                    <li>Re-implement your NumPy network in PyTorch. Compare code complexity.</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Build a digit classifier on MNIST using PyTorch (CNN)</li>
+                    <li>Add data augmentation, dropout, batch normalization</li>
+                    <li>Track training with TensorBoard or Weights & Biases (free tier)</li>
+                    <li>Experiment: change learning rate, batch size, architecture depth — document results</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Write a README comparing NumPy vs PyTorch implementation</li>
+                    <li>Document your MNIST experiments in a table (hyperparameters → accuracy)</li>
+                    <li>Push to GitHub. Tag this as your first "deep learning" project.</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 4 Deliverable</div>
+                    <p>GitHub repo: "deep-learning-from-scratch" with (1) NumPy 2-layer NN, (2) PyTorch MNIST CNN with TensorBoard logs, (3) hyperparameter experiment log.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Hyperparameter tuning is <strong>test configuration management</strong>. You already manage test environments, browser versions, and data sets. Now you're managing learning rates and batch sizes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 2 -->
+        <div class="phase-divider">
+            <div class="line"></div>
+            <div class="phase-label">Phase 2: Transformers & NLP (Weeks 5-8)</div>
+            <div class="line"></div>
+        </div>
+
+        <!-- WEEK 5 -->
+        <div class="week-card" id="w5">
+            <div class="week-header" onclick="toggleWeek('w5')">
+                <div class="week-number">W5</div>
+                <div class="week-title-wrap">
+                    <h3>Transformers & Hugging Face Ecosystem</h3>
+                    <div class="week-subtitle">Learn the architecture that powers modern AI</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete <a href="https://huggingface.co/learn/nlp-course/chapter1/1" class="resource-link" target="_blank">Hugging Face NLP Course</a> Chapters 1-2 (Transformers, pipeline usage)</li>
+                    <li>Read <a href="https://jalammar.github.io/illustrated-transformer/" class="resource-link" target="_blank">The Illustrated Transformer</a> by Jay Alammar</li>
+                    <li>Build a sentiment analysis pipeline using HF transformers (distilbert-base-uncased-finetuned-sst-2-english)</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete HF NLP Course Chapters 3-4 (Fine-tuning, sharing models)</li>
+                    <li>Fine-tune a pre-trained model on a custom dataset (e.g., IMDB reviews for sentiment)</li>
+                    <li>Push your fine-tuned model to Hugging Face Hub</li>
+                    <li>Learn about tokenizers: BPE, WordPiece, SentencePiece — implement basic BPE</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete HF NLP Course Chapter 5 (Datasets library)</li>
+                    <li>Build a Named Entity Recognition (NER) model on CoNLL-2003 dataset</li>
+                    <li>Build a text summarization model (CNN/DailyMail dataset)</li>
+                    <li>Compare model sizes: distilbert vs bert-base vs bert-large (inference time, memory)</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Create a "transformers-playground" repo with 3 tasks: sentiment, NER, summarization</li>
+                    <li>Write a README explaining what transformers are in QA terms: "It's like a test framework that reads the entire context before making an assertion"</li>
+                    <li>Push all models to HF Hub</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 5 Deliverable</div>
+                    <p>HF Hub profile with 3 fine-tuned models. GitHub repo with training scripts, inference examples, and a comparison table of model sizes vs performance.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Tokenization is <strong>input parsing and validation</strong>. You already know how to parse JSON/XML test inputs. Tokenizers just parse text into subword units. Same mental model.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 6 -->
+        <div class="week-card" id="w6">
+            <div class="week-header" onclick="toggleWeek('w6')">
+                <div class="week-number">W6</div>
+                <div class="week-title-wrap">
+                    <h3>LLM Architecture & Prompt Engineering</h3>
+                    <div class="week-subtitle">Understand how GPT works and how to talk to it</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Watch Karpathy's "Let's build GPT: from scratch, in code, spelled out" (Zero to Hero video 6)</li>
+                    <li>Implement a character-level GPT from scratch (follow along with the video)</li>
+                    <li>Read <a href="https://lil-log.com/2023/07/11/llm-powered-autonomous-agents/" class="resource-link" target="_blank">Lil'Log on LLM Powered Autonomous Agents</a></li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete <a href="https://www.promptingguide.ai/" class="resource-link" target="_blank">Prompt Engineering Guide</a> — all sections</li>
+                    <li>Practice: Zero-shot, few-shot, chain-of-thought, ReAct prompting on OpenAI API or HF models</li>
+                    <li>Build a prompt evaluation framework: test 10 prompts on the same task, score outputs</li>
+                    <li>Document which prompting strategy works best for which task type</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Read <a href="https://huyenchip.com/2023/06/07/generative-ai-services.html" class="resource-link" target="_blank">Chip Huyen's "Building LLM Applications"</a></li>
+                    <li>Build a simple LLM app using OpenAI API or local LLM (via Ollama/LM Studio)</li>
+                    <li>App idea: "Test Case Generator" — input a user story, output structured test cases in JSON</li>
+                    <li>Implement retry logic, error handling, output validation (JSON schema validation)</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Write a blog post: "Prompt Engineering for QA Engineers: Systematic Testing of LLM Outputs"</li>
+                    <li>Push your GPT-from-scratch code and your LLM app to GitHub</li>
+                    <li>Start documenting your "AI-powered QA" project ideas</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 6 Deliverable</div>
+                    <p>GitHub repo: (1) character-level GPT implementation, (2) prompt evaluation framework with results table, (3) "AI Test Case Generator" web app (FastAPI + frontend or CLI).</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Prompt evaluation is <strong>test case design for non-deterministic systems</strong>. You already design test cases with preconditions, steps, and expected results. Now your "expected results" are rubrics for LLM output quality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 7 -->
+        <div class="week-card" id="w7">
+            <div class="week-header" onclick="toggleWeek('w7')">
+                <div class="week-number">W7</div>
+                <div class="week-title-wrap">
+                    <h3>Vector Databases & Embeddings</h3>
+                    <div class="week-subtitle">The foundation of RAG and semantic search</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Read <a href="https://www.pinecone.io/learn/vector-embeddings/" class="resource-link" target="_blank">Pinecone: What are Vector Embeddings?</a></li>
+                    <li>Study embedding models: sentence-transformers, OpenAI embeddings, BGE embeddings</li>
+                    <li>Build a semantic search engine: embed 1000 documents, search with cosine similarity</li>
+                    <li>Compare embedding models on the same queries (qualitative analysis)</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Learn vector databases: Chroma, Pinecone, Weaviate, Qdrant</li>
+                    <li>Set up ChromaDB locally (easiest to start)</li>
+                    <li>Build a document search system: ingest PDFs → chunk → embed → store → query</li>
+                    <li>Experiment with chunking strategies: fixed size, recursive, semantic</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Read <a href="https://www.pinecone.io/learn/series/rag/" class="resource-link" target="_blank">Pinecone RAG Flow series</a> (all 5 articles)</li>
+                    <li>Build a basic RAG pipeline: query → retrieve top-k chunks → stuff into prompt → LLM answers</li>
+                    <li>Evaluate retrieval quality: for 20 questions, manually score if top-3 chunks contain the answer</li>
+                    <li>Calculate retrieval precision and recall</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Document your RAG system architecture in a diagram (Excalidraw or draw.io)</li>
+                    <li>Write a README explaining each component and your evaluation methodology</li>
+                    <li>Push to GitHub as "semantic-search-rag" project</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 7 Deliverable</div>
+                    <p>A working RAG pipeline with: (1) document ingestion + chunking, (2) vector DB storage, (3) semantic retrieval, (4) LLM generation, (5) retrieval evaluation metrics (precision@k, recall@k).</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Chunking strategy is <strong>test case granularity</strong>. Too big = missed edge cases. Too small = lost context. You already know how to balance coverage vs. maintainability in test suites.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 8 -->
+        <div class="week-card" id="w8">
+            <div class="week-header" onclick="toggleWeek('w8')">
+                <div class="week-number">W8</div>
+                <div class="week-title-wrap">
+                    <h3>LangChain / LlamaIndex & Advanced RAG</h3>
+                    <div class="week-subtitle">Production-ready RAG with frameworks</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete <a href="https://python.langchain.com/docs/tutorials/rag/" class="resource-link" target="_blank">LangChain RAG Tutorial</a></li>
+                    <li>Rebuild your Week 7 RAG system using LangChain (compare: raw vs framework)</li>
+                    <li>Add conversation memory (chat history) to your RAG bot</li>
+                    <li>Implement source citation: make the bot cite which document chunks it used</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Learn advanced RAG techniques: query rewriting, hybrid search (BM25 + vector), reranking</li>
+                    <li>Implement a reranker (cross-encoder) to improve retrieval quality</li>
+                    <li>Read <a href="https://docs.llamaindex.ai/en/stable/optimizing/production_rag/" class="resource-link" target="_blank">LlamaIndex Production RAG Guide</a></li>
+                    <li>Build with LlamaIndex: compare developer experience with LangChain</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Build your first portfolio project: <strong>"Internal Documentation QA Bot"</strong></li>
+                    <li>Tech stack: FastAPI backend, ChromaDB, LangChain/LlamaIndex, OpenAI or local LLM</li>
+                    <li>Features: upload documents, ask questions, get cited answers, chat history</li>
+                    <li>Write API tests for your endpoints (pytest) — use your QA skills here</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Deploy your bot locally with Docker (Dockerfile + docker-compose)</li>
+                    <li>Write a comprehensive README with setup instructions, architecture diagram, and demo GIF</li>
+                    <li>Record a 2-minute Loom video demo and link in README</li>
+                    <li>Push to GitHub — this is your first major portfolio piece</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 8 Deliverable</div>
+                    <p>Production-ready "Internal Docs QA Bot" with: (1) FastAPI backend, (2) RAG with source citation, (3) Docker deployment, (4) pytest API tests, (5) README + demo video. This goes on your resume.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Writing pytest for your AI API is <strong>your superpower</strong>. Most AI engineers skip testing. You don't. Test the retrieval endpoint, the generation endpoint, and the full pipeline end-to-end.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PHASE 3 -->
+        <div class="phase-divider">
+            <div class="line"></div>
+            <div class="phase-label">Phase 3: Production AI (Weeks 9-12)</div>
+            <div class="line"></div>
+        </div>
+
+        <!-- WEEK 9 -->
+        <div class="week-card" id="w9">
+            <div class="week-header" onclick="toggleWeek('w9')">
+                <div class="week-number">W9</div>
+                <div class="week-title-wrap">
+                    <h3>LLM Evaluation & Fine-Tuning</h3>
+                    <div class="week-subtitle">Measure quality and customize models</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Study <a href="https://docs.ragas.io/" class="resource-link" target="_blank">RAGAS</a> framework: faithfulness, answer relevancy, context precision, context recall</li>
+                    <li>Integrate RAGAS into your Week 8 project. Evaluate 50 questions automatically.</li>
+                    <li>Study <a href="https://docs.confident-ai.com/" class="resource-link" target="_blank">DeepEval</a>: unit tests for LLMs</li>
+                    <li>Write 10 DeepEval test cases for your RAG bot (assert answer relevance, no hallucination)</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Learn fine-tuning: LoRA, QLoRA, full fine-tuning trade-offs</li>
+                    <li>Read <a href="https://huggingface.co/docs/peft/main/en/tutorial/peft_model_config" class="resource-link" target="_blank">PEFT documentation</a></li>
+                    <li>Fine-tune a small model (TinyLlama-1.1B or Phi-2) on a custom dataset using PEFT + LoRA</li>
+                    <li>Dataset idea: QA pairs from your domain (software testing documentation, bug reports)</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Compare base model vs fine-tuned model on your evaluation set</li>
+                    <li>Quantize your model (GGUF via llama.cpp or AWQ/GPTQ) for faster inference</li>
+                    <li>Deploy your fine-tuned model locally with Ollama or vLLM</li>
+                    <li>Benchmark: inference time, memory usage, output quality (before vs after quantization)</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Write a blog post: "How I evaluate my RAG system: A QA Engineer's metrics playbook"</li>
+                    <li>Push your evaluation framework and fine-tuning code to GitHub</li>
+                    <li>Update your resume: add "LLM Evaluation" and "Fine-tuning" skills</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 9 Deliverable</div>
+                    <p>Repo: "llm-evaluation-framework" with (1) RAGAS evaluation pipeline, (2) DeepEval unit tests, (3) LoRA fine-tuned model on HF Hub, (4) quantization benchmark report.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>RAGAS + DeepEval = <strong>automated regression testing for AI</strong>. You're literally building a CI pipeline for model quality. This is your unique value proposition.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 10 -->
+        <div class="week-card" id="w10">
+            <div class="week-header" onclick="toggleWeek('w10')">
+                <div class="week-number">W10</div>
+                <div class="week-title-wrap">
+                    <h3>MLOps: Experiment Tracking, Serving & Monitoring</h3>
+                    <div class="week-subtitle">Make your AI systems production-ready</div>
+                </div>
+                <div class="week-hours">~18 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Complete <a href="https://madewithml.com/" class="resource-link" target="_blank">Made With ML</a> MLOps module (experiment tracking, model registry)</li>
+                    <li>Set up MLflow locally. Track your fine-tuning experiments (hyperparameters, metrics, artifacts)</li>
+                    <li>Learn about model registries: versioning, staging (dev/staging/prod), promotion</li>
+                    <li>Register your fine-tuned model in MLflow Model Registry</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Learn model serving: FastAPI + uvicorn, BentoML, Triton, vLLM</li>
+                    <li>Build a model serving API with FastAPI that loads your fine-tuned model</li>
+                    <li>Add batch inference endpoint (process multiple queries at once)</li>
+                    <li>Load test your API with locust or k6 — measure latency, throughput, error rate</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Learn monitoring: Evidently AI, WhyLabs, Arize AI</li>
+                    <li>Set up basic drift detection on your model inputs (embeddings drift) and outputs (sentiment drift)</li>
+                    <li>Build a simple dashboard (Streamlit or Gradio) showing model performance over time</li>
+                    <li>Read about CI/CD for ML: GitHub Actions for model training, testing, deployment</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Set up a GitHub Actions workflow: on push, run DeepEval tests, if pass → deploy to staging</li>
+                    <li>Document your full MLOps pipeline in a README with architecture diagram</li>
+                    <li>Push everything to GitHub as "mlops-pipeline" project</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 10 Deliverable</div>
+                    <p>End-to-end MLOps pipeline: (1) MLflow experiment tracking, (2) Model Registry, (3) FastAPI serving with load tests, (4) Drift monitoring dashboard, (5) GitHub Actions CI/CD for ML.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>Load testing an AI API is identical to <strong>performance testing a web service</strong>. You already know about response times, throughput, and error budgets. Apply the same SRE mindset here.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 11 -->
+        <div class="week-card" id="w11">
+            <div class="week-header" onclick="toggleWeek('w11')">
+                <div class="week-number">W11</div>
+                <div class="week-title-wrap">
+                    <h3>System Design for AI & Capstone Project</h3>
+                    <div class="week-subtitle">Design scalable AI systems and build your showcase</div>
+                </div>
+                <div class="week-hours">~20 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Read <a href="https://huyenchip.com/2023/01/01/what-is-mlops.html" class="resource-link" target="_blank">Chip Huyen's "What is MLOps?"</a></li>
+                    <li>Study system design patterns: RAG architecture, model caching, request batching, async processing</li>
+                    <li>Practice: Design a "ChatGPT for Enterprise Documents" system on paper. Draw architecture.</li>
+                    <li>Consider: scalability, latency, cost, fallback strategies, data privacy</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Start your capstone project: <strong>"AI-Powered QA Assistant"</strong></li>
+                    <li>Features: (a) ingest test plans/docs, (b) answer QA questions, (c) generate test cases from requirements, (d) classify bugs by severity/type</li>
+                    <li>Tech stack: FastAPI, LangChain, ChromaDB, fine-tuned model, MLflow, Docker</li>
+                    <li>Write the system design doc first (README architecture section) before coding</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (7 hrs)</div>
+                <ul class="task-list">
+                    <li>Build the core pipeline: document ingestion → RAG → test case generation</li>
+                    <li>Build the bug classification module (fine-tuned classifier on your bug dataset)</li>
+                    <li>Integrate evaluation: RAGAS for RAG quality, classification report for bug classifier</li>
+                    <li>Add comprehensive pytest suite (API tests, integration tests, model quality tests)</li>
+                </ul>
+
+                <div class="section-label">Sunday (3 hrs)</div>
+                <ul class="task-list">
+                    <li>Polish the README: architecture diagram, setup instructions, feature list, evaluation results</li>
+                    <li>Record a 3-minute demo video showing all features</li>
+                    <li>Pin this repo on your GitHub profile</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 11 Deliverable</div>
+                    <p>Capstone: "AI-Powered QA Assistant" — a full-stack AI application with RAG, test case generation, bug classification, evaluation metrics, and comprehensive testing. This is your interview talking point.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>This project bridges your entire career. You're not abandoning QA — you're <strong>augmenting it with AI</strong>. Every interviewer will ask about it. Own the narrative.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 12 -->
+        <div class="week-card" id="w12">
+            <div class="week-header" onclick="toggleWeek('w12')">
+                <div class="week-number">W12</div>
+                <div class="week-title-wrap">
+                    <h3>Interview Prep, Resume Polish & Job Search</h3>
+                    <div class="week-subtitle">Convert your learning into job offers</div>
+                </div>
+                <div class="week-hours">~20 hrs</div>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="week-body">
+                <div class="section-label">Monday - Tuesday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Coding prep: Solve 10 NeetCode problems (focus on arrays, hash maps, strings, BFS/DFS)</li>
+                    <li>ML coding: Practice pandas manipulation, model inference code, vector operations</li>
+                    <li>Review <a href="https://huyenchip.com/ml-interviews-book/" class="resource-link" target="_blank">ML Interviews Book</a> — Chapters 1-3</li>
+                </ul>
+
+                <div class="section-label">Wednesday - Thursday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>System design practice: Design a RAG system, a recommendation engine, an LLM chatbot</li>
+                    <li>For each design, practice explaining it aloud for 30 minutes (record yourself)</li>
+                    <li>Study <a href="https://github.com/donnemartin/system-design-primer" class="resource-link" target="_blank">System Design Primer</a> — focus on scalability and distributed systems basics</li>
+                    <li>Prepare 3 stories using your QA background + new AI projects (problem → action → result)</li>
+                </ul>
+
+                <div class="section-label">Friday - Saturday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Polish your resume: Lead with "AI/ML Engineer" title, not "QA Engineer"</li>
+                    <li>Resume structure: (1) Summary, (2) AI Projects, (3) Skills, (4) Work Experience (reframed)</li>
+                    <li>Reframe QA work: "Built automated validation frameworks" → "Developed scalable data validation pipelines"</li>
+                    <li>Update LinkedIn: new headline, featured projects, skills (AI/ML keywords)</li>
+                    <li>Write a LinkedIn post announcing your transition and showcasing your capstone project</li>
+                </ul>
+
+                <div class="section-label">Sunday (5 hrs)</div>
+                <ul class="task-list">
+                    <li>Apply to 10 jobs: target "AI Engineer," "Applied AI Engineer," "LLM Engineer," "ML Engineer (3-5 YOE)"</li>
+                    <li>Companies to target: Series B/C startups with AI products, companies with QA teams (value your dual perspective), AI consultancies</li>
+                    <li>Customize each cover letter: mention your QA background as an asset for AI evaluation and reliability</li>
+                    <li>Set up job tracking (Notion/Spreadsheet): company, role, date applied, status, notes</li>
+                    <li>Schedule 2 informational interviews with AI engineers on LinkedIn for next week</li>
+                </ul>
+
+                <div class="deliverable-box">
+                    <div class="deliverable-title">🎯 Week 12 Deliverables</div>
+                    <p>(1) Resume optimized for AI Engineer roles, (2) LinkedIn updated with project showcase, (3) 10 job applications submitted, (4) System design practice recordings, (5) Job search tracker set up.</p>
+                </div>
+
+                <div class="qa-tip">
+                    <div class="qa-title">💡 QA Leverage</div>
+                    <p>In interviews, say: <em>"Most AI engineers can build models. I can build models AND systematically validate them at scale. My QA background means I ship reliable AI systems, not just working demos."</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="checkpoint">
+            <h3>🎉 Post-12-Week Checklist</h3>
+            <p>You should have: 5 GitHub repos, 3 blog posts, 1 capstone project with demo video,<br>1 fine-tuned model on HF Hub, MLflow experiments, and 10+ job applications in flight.</p>
+        </div>
+
+        <footer>
+            <p>Execute one week at a time. Don't skip the deliverables. Your GitHub is your resume.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.6;">Built for QA Engineers transitioning to AI Engineering (3-4 YOE target)</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleWeek(id) {
+            const card = document.getElementById(id);
+            card.classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
