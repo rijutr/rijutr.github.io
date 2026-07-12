@@ -3,31 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QA & Dev Portfolio | Learning Roadmaps</title>
+  <title>AI/ML Engineer Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/portfolio.css" />
+  <link rel="stylesheet" href="css/monochrome-roadmap.css" />
 </head>
 <body>
 
-<!-- ═══════════════════ NAVBAR ═══════════════════ -->
 <nav class="navbar" id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-      <span class="logo-bracket">{</span>QA<span class="logo-dot">.</span>Dev<span class="logo-bracket">}</span>
+    <a href="#home" class="nav-logo">
+      <span class="logo-bracket">{</span>AI<span class="logo-dot">.</span>Dev<span class="logo-bracket">}</span>
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#courses">Roadmaps</a></li>
+      <li><a href="#skills">Expertise</a></li>
+      <li><a href="#interests">Interests</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="lms.html" class="nav-lms-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Open LMS
-      </a></li>
     </ul>
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
@@ -45,357 +39,151 @@
   </div>
 </nav>
 
-<!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero" id="home">
-  <div class="hero-bg">
-    <div class="hero-grid"></div>
-    <div class="hero-glow glow-1"></div>
-    <div class="hero-glow glow-2"></div>
-  </div>
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      Available for Opportunities
-    </div>
-    <h1 class="hero-title">
-      <span class="line-reveal">Software Test</span>
-      <span class="line-reveal delay-1">Engineer <span class="title-accent">&amp; Dev</span></span>
-    </h1>
-    <p class="hero-sub">Automating quality. Crafting reliability. Building scalable test architectures with Java, Python, Playwright, and modern DevOps practices.</p>
-    <div class="hero-tags">
-      <span class="tag">Java</span>
-      <span class="tag">Python</span>
-      <span class="tag">Playwright</span>
-      <span class="tag">RestAssured</span>
-      <span class="tag">Selenium</span>
-      <span class="tag">CI/CD</span>
-      <span class="tag">SQL</span>
-    </div>
-    <div class="hero-cta">
-      <a href="#experience" class="btn btn-primary">View My Work</a>
-      <a href="lms.html" class="btn btn-ghost">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Browse Learning Paths
-      </a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="code-card">
-      <div class="code-header">
-        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-        <span class="code-filename">TestSuite.java</span>
+  <div class="container hero-wrap">
+    <div class="hero-copy">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for AI/ML opportunities
       </div>
-      <pre class="code-body"><code><span class="code-comment">// API Test with RestAssured</span>
-<span class="code-keyword">@Test</span>
-<span class="code-keyword">public void</span> <span class="code-fn">verifyUserEndpoint</span>() {
-  given()
-    .baseUri(<span class="code-str">"https://api.example.com"</span>)
-    .header(<span class="code-str">"Authorization"</span>, token)
-  .when()
-    .get(<span class="code-str">"/users/1"</span>)
-  .then()
-    .statusCode(<span class="code-num">200</span>)
-    .body(<span class="code-str">"name"</span>, equalTo(<span class="code-str">"John"</span>))
-    .time(lessThan(<span class="code-num">2000L</span>));
-}</code></pre>
+      <h1 class="hero-title">AI/ML Engineer</h1>
+      <p class="hero-sub">I build and work with intelligent systems using Python, Machine Learning, and Deep Learning to solve real-world problems and support data-informed decision-making.</p>
+      <div class="hero-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">AI Frameworks</span>
+        <span class="tag">Model Integration</span>
+      </div>
+      <div class="hero-cta">
+        <a href="#about" class="btn btn-primary">About me</a>
+        <a href="#interests" class="btn btn-ghost">My interests</a>
+      </div>
     </div>
-    <div class="stats-row">
-      <div class="stat-chip"><span class="stat-num">9+</span><span class="stat-label">Learning Paths</span></div>
-      <div class="stat-chip"><span class="stat-num">4-6</span><span class="stat-label">Months Each</span></div>
-      <div class="stat-chip"><span class="stat-num">2hrs</span><span class="stat-label">Daily Practice</span></div>
+
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot yellow"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">profile.sh</span>
+      </div>
+      <pre class="terminal-body">$ whoami
+ai_ml_engineer
+
+$ location
+Bengaluru, India
+
+$ focus
+Python • ML • DL • AI Systems
+
+$ mindset
+Practical, analytical, hands-on</pre>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ ABOUT ═══════════════════ -->
 <section class="section" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-text">
-        <p class="section-eyebrow">About Me</p>
-        <h2 class="section-title">Passionate about <span class="accent">Quality</span> &amp; Continuous Learning</h2>
-        <p class="about-para">I'm a QA Engineer and Developer who believes that quality is not just a phase — it's a culture. With hands-on experience across manual, automation, and performance testing, I thrive in fast-paced teams where reliability matters.</p>
-        <p class="about-para">I've built this learning platform to document and share structured roadmaps for tools and technologies I use every day — helping others navigate the complex landscape of modern QA engineering.</p>
-        <div class="about-highlights">
-          <div class="highlight-item">
-            <div class="highlight-icon">⚡</div>
-            <div><strong>Test Automation</strong><p>End-to-end, API, and performance testing</p></div>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-icon">🎯</div>
-            <div><strong>CI/CD Integration</strong><p>Jenkins, GitHub Actions, Docker pipelines</p></div>
-          </div>
-          <div class="highlight-item">
-            <div class="highlight-icon">📚</div>
-            <div><strong>Mentorship</strong><p>Structured roadmaps &amp; learning guides</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="about-visual">
-        <div class="avatar-wrap">
-          <div class="avatar-ring"></div>
-          <div class="avatar-placeholder">
-            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <p>Your Photo</p>
-          </div>
-        </div>
-        <div class="about-card-float">
-          <span class="float-icon">🏆</span>
-          <div>
-            <strong>ISTQB Certified</strong>
-            <p>Foundation Level</p>
-          </div>
-        </div>
-      </div>
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="section-eyebrow">About</p>
+      <h2 class="section-title">From Python foundations to deployable AI systems.</h2>
+      <p class="about-para">I’m an AI/ML Engineer with hands-on experience building and working with intelligent systems using Python, Machine Learning, and Deep Learning. My work spans the AI development lifecycle — from data handling and model experimentation to integrating modern AI frameworks into functional systems.</p>
+      <p class="about-para">With a strong grounding in Python, I translate complex technical concepts into practical, deployable solutions. I stay current with the fast-evolving AI landscape by continuously exploring new frameworks, tools, and techniques to sharpen technical expertise and deliver more effective, efficient solutions.</p>
+      <p class="about-para">Based in Bengaluru, I’m passionate about leveraging AI to build smarter, more efficient systems.</p>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-card-title">Current approach</div>
+      <ul class="profile-list">
+        <li>Build with Python-first workflows</li>
+        <li>Work across machine learning and deep learning</li>
+        <li>Focus on practical, real-world deployment</li>
+        <li>Keep learning new AI frameworks and tools</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ SKILLS ═══════════════════ -->
 <section class="section section-alt" id="skills">
   <div class="container">
-    <p class="section-eyebrow center">Tech Stack</p>
-    <h2 class="section-title center">Skills &amp; <span class="accent">Technologies</span></h2>
+    <p class="section-eyebrow center">Expertise</p>
+    <h2 class="section-title center">Core toolkit</h2>
     <div class="skills-grid">
-      <div class="skill-category">
-        <h3 class="skill-cat-title">
-          <span class="cat-icon">🔧</span> Test Automation
-        </h3>
-        <div class="skill-pills">
-          <span class="skill-pill level-expert">Selenium WebDriver</span>
-          <span class="skill-pill level-expert">RestAssured</span>
-          <span class="skill-pill level-advanced">Playwright</span>
-          <span class="skill-pill level-advanced">Cypress</span>
-          <span class="skill-pill level-intermediate">Appium</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-cat-title">
-          <span class="cat-icon">💻</span> Languages
-        </h3>
-        <div class="skill-pills">
-          <span class="skill-pill level-expert">Java</span>
-          <span class="skill-pill level-advanced">Python</span>
-          <span class="skill-pill level-advanced">TypeScript</span>
-          <span class="skill-pill level-intermediate">JavaScript</span>
-          <span class="skill-pill level-intermediate">SQL</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-cat-title">
-          <span class="cat-icon">⚙️</span> DevOps & CI/CD
-        </h3>
-        <div class="skill-pills">
-          <span class="skill-pill level-advanced">Jenkins</span>
-          <span class="skill-pill level-advanced">GitHub Actions</span>
-          <span class="skill-pill level-intermediate">Docker</span>
-          <span class="skill-pill level-intermediate">Kubernetes</span>
-          <span class="skill-pill level-beginner">Terraform</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-cat-title">
-          <span class="cat-icon">📊</span> Performance Testing
-        </h3>
-        <div class="skill-pills">
-          <span class="skill-pill level-advanced">JMeter</span>
-          <span class="skill-pill level-intermediate">K6</span>
-          <span class="skill-pill level-intermediate">Gatling</span>
-          <span class="skill-pill level-beginner">Locust</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-cat-title">
-          <span class="cat-icon">🤖</span> AI & Testing
-        </h3>
-        <div class="skill-pills">
-          <span class="skill-pill level-intermediate">LLM Testing</span>
-          <span class="skill-pill level-intermediate">Prompt Engineering</span>
-          <span class="skill-pill level-beginner">ML Model Testing</span>
-          <span class="skill-pill level-intermediate">pytest + AI</span>
-        </div>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-cat-title">
-          <span class="cat-icon">🗄️</span> Databases
-        </h3>
-        <div class="skill-pills">
-          <span class="skill-pill level-advanced">MySQL</span>
-          <span class="skill-pill level-advanced">PostgreSQL</span>
-          <span class="skill-pill level-intermediate">MongoDB</span>
-          <span class="skill-pill level-intermediate">Redis</span>
-        </div>
-      </div>
-    </div>
-    <div class="skill-legend">
-      <span><span class="legend-dot level-expert"></span>Expert</span>
-      <span><span class="legend-dot level-advanced"></span>Advanced</span>
-      <span><span class="legend-dot level-intermediate"></span>Intermediate</span>
-      <span><span class="legend-dot level-beginner"></span>Beginner</span>
+      <article class="skill-card">
+        <h3>Languages & Core Logic</h3>
+        <p>Python, analytical problem solving, data-centric thinking, and clean implementation patterns.</p>
+      </article>
+      <article class="skill-card">
+        <h3>Machine Learning</h3>
+        <p>Model development, experimentation, feature understanding, evaluation, and iterative improvement.</p>
+      </article>
+      <article class="skill-card">
+        <h3>Deep Learning</h3>
+        <p>Neural network workflows, modern AI frameworks, model behavior understanding, and applied experimentation.</p>
+      </article>
+      <article class="skill-card">
+        <h3>AI Systems</h3>
+        <p>Integrating AI into functional products, connecting research with deployment, and building smart workflows.</p>
+      </article>
+      <article class="skill-card">
+        <h3>Continuous Learning</h3>
+        <p>Exploring new tools, staying aligned with AI trends, and expanding technical depth with hands-on practice.</p>
+      </article>
+      <article class="skill-card">
+        <h3>Practical Delivery</h3>
+        <p>Translating complex technical concepts into clear, efficient, and deployable solutions.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
-<section class="section" id="experience">
+<section class="section" id="interests">
   <div class="container">
-    <p class="section-eyebrow center">Career Journey</p>
-    <h2 class="section-title center">Work <span class="accent">Experience</span></h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <h3>Senior QA Automation Engineer</h3>
-              <p class="timeline-company">Your Current Company</p>
-            </div>
-            <span class="timeline-date">2023 – Present</span>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Built end-to-end test automation framework using Java + Selenium + TestNG</li>
-            <li>Implemented API testing suite with RestAssured covering 200+ endpoints</li>
-            <li>Integrated test pipelines with Jenkins and GitHub Actions for CI/CD</li>
-            <li>Reduced regression cycle from 3 days to 4 hours through automation</li>
-          </ul>
-          <div class="timeline-tags">
-            <span>Java</span><span>Selenium</span><span>RestAssured</span><span>Jenkins</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <h3>QA Engineer</h3>
-              <p class="timeline-company">Previous Company</p>
-            </div>
-            <span class="timeline-date">2021 – 2023</span>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Developed Playwright test suite for web application with TypeScript</li>
-            <li>Performed API testing using Postman and Python requests library</li>
-            <li>Executed performance tests using JMeter for load and stress testing</li>
-            <li>Collaborated with Dev teams in Agile/Scrum methodology</li>
-          </ul>
-          <div class="timeline-tags">
-            <span>Playwright</span><span>Python</span><span>JMeter</span><span>Postman</span>
-          </div>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <h3>Junior QA Tester</h3>
-              <p class="timeline-company">First Company</p>
-            </div>
-            <span class="timeline-date">2019 – 2021</span>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Manual testing of web and mobile applications</li>
-            <li>Wrote detailed test cases and bug reports in JIRA</li>
-            <li>Learned fundamentals of SQL for test data management</li>
-            <li>Started automation journey with Selenium and Java</li>
-          </ul>
-          <div class="timeline-tags">
-            <span>Manual Testing</span><span>SQL</span><span>JIRA</span><span>Selenium</span>
-          </div>
-        </div>
-      </div>
+    <p class="section-eyebrow">Interests</p>
+    <h2 class="section-title">What I’m actively exploring</h2>
+    <div class="interest-grid">
+      <article class="interest-card">
+        <h3>Applied ML</h3>
+        <p>Building models that solve real issues with measurable impact.</p>
+      </article>
+      <article class="interest-card">
+        <h3>Deep Learning</h3>
+        <p>Working with neural networks and modern AI frameworks to push practical experimentation further.</p>
+      </article>
+      <article class="interest-card">
+        <h3>Intelligent Systems</h3>
+        <p>Designing workflow-driven AI solutions that support smarter, more efficient operations.</p>
+      </article>
+      <article class="interest-card">
+        <h3>Continuous Growth</h3>
+        <p>Exploring emerging AI tools and frameworks while keeping a grounded, hands-on engineering mindset.</p>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ COURSES PREVIEW ═══════════════════ -->
-<section class="section section-alt" id="courses">
+<section class="section section-alt" id="contact">
   <div class="container">
-    <p class="section-eyebrow center">Learning Platform</p>
-    <h2 class="section-title center">Structured <span class="accent">Roadmaps</span></h2>
-    <p class="section-sub center">9 curated learning paths — each designed for 2hrs/day commitment over 4-6 months</p>
-    <div class="course-preview-grid" id="coursePreviewGrid">
-      <!-- JS populated -->
-    </div>
-    <div class="courses-cta">
-      <a href="lms.html" class="btn btn-primary btn-large">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        Open Full LMS Platform
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════ CONTACT ═══════════════════ -->
-<section class="section" id="contact">
-  <div class="container">
-    <p class="section-eyebrow center">Get In Touch</p>
-    <h2 class="section-title center">Let's <span class="accent">Connect</span></h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p>Whether you want to collaborate, discuss testing strategies, or just say hello — my inbox is open.</p>
-        <div class="contact-links">
-          <a href="https://github.com/yourusername" class="contact-link" target="_blank">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
-          <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-          <a href="mailto:your@email.com" class="contact-link">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            Email Me
-          </a>
-          <a href="https://twitter.com/yourusername" class="contact-link" target="_blank">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Twitter/X
-          </a>
-        </div>
-      </div>
-      <div class="contact-form-wrap">
-        <div class="contact-form">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" placeholder="John Doe" />
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="john@example.com" />
-          </div>
-          <div class="form-group">
-            <label>Message</label>
-            <textarea rows="4" placeholder="Let's talk about testing, collaboration, or anything..."></textarea>
-          </div>
-          <button class="btn btn-primary w-full" onclick="alert('Please configure a form handler (Formspree, EmailJS, etc.) to receive messages.')">Send Message</button>
-        </div>
+    <div class="contact-card">
+      <p class="section-eyebrow">Contact</p>
+      <h2 class="section-title">Let's build with AI.</h2>
+      <p class="contact-text">Based in Bengaluru and actively exploring practical AI engineering opportunities, collaborations, and thoughtful technical conversations.</p>
+      <div class="contact-links">
+        <a href="https://github.com/rijutr" class="contact-link" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/rijut-r-18513115a/" class="contact-link" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="mailto:rijut2000@gmail.com" class="contact-link">Email</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo"><span class="logo-bracket">{</span>QA<span class="logo-dot">.</span>Dev<span class="logo-bracket">}</span></a>
-        <p>Building quality, one test at a time.</p>
-      </div>
-      <div class="footer-links">
-        <a href="index.html">Portfolio</a>
-        <a href="lms.html">LMS Platform</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 QA.Dev Portfolio • Built with ❤️ and deployed on GitHub Pages</p>
-    </div>
+  <div class="container footer-inner">
+    <p>© 2026 AI/ML Engineer Portfolio • Built for calm, practical AI work.</p>
   </div>
 </footer>
 
-<script src="js/data.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

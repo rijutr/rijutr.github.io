@@ -37,30 +37,19 @@ navLinks?.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => navLinks?.classList.remove('mobile-open'));
 });
 
-// ── Course Preview Cards ──
-const previewGrid = document.getElementById('coursePreviewGrid');
-if (previewGrid && typeof COURSES !== 'undefined') {
-  COURSES.forEach(course => {
-    const card = document.createElement('div');
-    card.className = 'course-preview-card';
-    card.style.setProperty('--course-color', course.color);
-    card.innerHTML = `
-      <div class="preview-icon">${course.emoji}</div>
-      <div class="preview-title">${course.title}</div>
-      <div class="preview-meta">
-        <span>⏱ ${course.duration}</span>
-        <span>📊 ${course.level}</span>
-      </div>
-    `;
-    card.addEventListener('click', () => {
-      window.location.href = `lms.html#${course.id}`;
-    });
-    previewGrid.appendChild(card);
+// ── Roadmap accordion toggle ──
+document.querySelectorAll('.week-header').forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.week-card');
+    if (!card) return;
+
+    const isCollapsed = card.classList.toggle('collapsed');
+    button.setAttribute('aria-expanded', String(!isCollapsed));
   });
-}
+});
 
 // ── Intersection Observer for animations ──
-const observeElements = document.querySelectorAll('.timeline-card, .skill-category, .highlight-item, .course-preview-card');
+const observeElements = document.querySelectorAll('.summary-card, .overview-chip, .week-card, .contact-card');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -75,7 +64,7 @@ const observer = new IntersectionObserver((entries) => {
 
 observeElements.forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
+  el.style.transform = 'translateY(16px)';
   el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
   observer.observe(el);
 });
